@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "[i] if springboard is not cleaned, please run uicache manually"

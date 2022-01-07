@@ -1,0 +1,9 @@
+Package: wiki.qaq.iridium
+Name: iridium
+Description: An iOS application decrypter built ready for use.
+Author: Lakr Aream <launchctl@outlook.com>
+Maintainer: Lakr Aream <launchctl@outlook.com>
+Version: @@VERSION@@
+Section: Applications
+Pre-Depends: firmware (>= 13.0)
+Architecture: iphoneos-arm
