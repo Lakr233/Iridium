@@ -59,10 +59,14 @@ cp "$WORKING_LOCATION/AuxiliaryAgent/build/AuxiliaryAgent" "$WORKING_LOCATION/bu
 # now put the agent into our app
 cp "$WORKING_LOCATION/build/AuxiliaryAgent" "$TARGET_APP/AuxiliaryAgent"
 
+# put the fouls into our .app
+cd "$TARGET_APP"
+unzip "$WORKING_LOCATION/Workflow/fouldecrypt.zip"
+
 # ==============================================================================
 
 # make dpkg layer
-cd dpkg
+cd "$WORKING_LOCATION/build/dpkg"
 mkdir ./Applications
 cp -r "$TARGET_APP" ./Applications/
 cp -r "$WORKING_LOCATION/Workflow/DEBIAN" ./

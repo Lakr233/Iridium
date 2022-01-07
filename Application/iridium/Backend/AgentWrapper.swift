@@ -17,19 +17,17 @@ private let binaryName = "AuxiliaryAgent"
 
 class Agent {
     var binaryLocation: URL!
-    var foulsLocation = documentsDirectory
-        .appendingPathComponent("foul")
 
     var foulTFP0: URL {
-        foulsLocation.appendingPathComponent("fouldecrypt.tfp0")
+        Bundle.main.bundleURL.appendingPathComponent("fouldecrypt.tfp0")
     }
 
     var foulKRW: URL {
-        foulsLocation.appendingPathComponent("fouldecrypt.krw")
+        Bundle.main.bundleURL.appendingPathComponent("fouldecrypt.krw")
     }
 
     var foulKERNRW: URL {
-        foulsLocation.appendingPathComponent("fouldecrypt.kernrw")
+        Bundle.main.bundleURL.appendingPathComponent("fouldecrypt.kernrw")
     }
 
     enum FoulOption: String {
@@ -99,25 +97,6 @@ class Agent {
                 binaryLocation = location
                 break
             }
-
-        } while false
-        debugPrint("unarchiving fouldecrypt")
-        repeat {
-            guard let bundleRes = Bundle
-                .main
-                .url(forResource: "fouldecrypt", withExtension: "zip")
-            else {
-                break
-            }
-            try? FileManager.default.removeItem(at: foulsLocation)
-            try? FileManager.default.createDirectory(
-                at: foulsLocation,
-                withIntermediateDirectories: true,
-                attributes: nil
-            )
-            SSZipArchive.unzipFile(atPath: bundleRes.path, toDestination: foulsLocation.path)
-            debugPrint("foul binary available at \(foulsLocation)")
-            // make executable
 
         } while false
     }

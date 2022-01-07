@@ -21,7 +21,6 @@
 		50B0BEC52788022B00A0963F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0BEC42788022B00A0963F /* main.swift */; };
 		50B0BEC727880B8400A0963F /* PropertyWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 50B0BEC627880B8400A0963F /* PropertyWrapper */; };
 		50B0BEC927881B1F00A0963F /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0BEC827881B1F00A0963F /* SettingView.swift */; };
-		50DC8ACF27876F99003F4A31 /* fouldecrypt.zip in Resources */ = {isa = PBXBuildFile; fileRef = 50DC8ACE27876F99003F4A31 /* fouldecrypt.zip */; };
 		50DC8AD527877152003F4A31 /* AppListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DC8AD427877152003F4A31 /* AppListViewController+TableView.swift */; };
 		50DC8AD72787715F003F4A31 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DC8AD62787715F003F4A31 /* AppCell.swift */; };
 		50DC8AD92787717D003F4A31 /* AppListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DC8AD82787717D003F4A31 /* AppListViewController+SearchBar.swift */; };
@@ -47,7 +46,6 @@
 		50B0BEC02787F71F00A0963F /* DecrypterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecrypterViewController.swift; sourceTree = "<group>"; };
 		50B0BEC42788022B00A0963F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50B0BEC827881B1F00A0963F /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		50DC8ACE27876F99003F4A31 /* fouldecrypt.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = fouldecrypt.zip; sourceTree = "<group>"; };
 		50DC8AD427877152003F4A31 /* AppListViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppListViewController+TableView.swift"; sourceTree = "<group>"; };
 		50DC8AD62787715F003F4A31 /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
 		50DC8AD82787717D003F4A31 /* AppListViewController+SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppListViewController+SearchBar.swift"; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				506ACD862787531F0007ACAA /* Assets.xcassets */,
-				50DC8ACE27876F99003F4A31 /* fouldecrypt.zip */,
 			);
 			name = Ress;
 			sourceTree = "<group>";
@@ -246,7 +243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				506ACD8A2787531F0007ACAA /* LaunchScreen.storyboard in Resources */,
-				50DC8ACF27876F99003F4A31 /* fouldecrypt.zip in Resources */,
 				506ACD872787531F0007ACAA /* Assets.xcassets in Resources */,
 				506ACD852787531F0007ACAA /* Main.storyboard in Resources */,
 			);
