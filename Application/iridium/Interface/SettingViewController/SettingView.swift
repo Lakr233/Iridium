@@ -181,6 +181,8 @@ class SettingView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         view.textColor = .gray
         view.contentInset = UIEdgeInsets(inset: 0)
         view.textContainer.lineFragmentPadding = 0
+        view.isEditable = false
+        view.isSelectable = true
         return view
     }
 

@@ -34,6 +34,7 @@ class DecrypterViewController: UIViewController {
         textView.font = .monospacedSystemFont(ofSize: 12, weight: .bold)
 
         textView.isEditable = false
+        textView.isSelectable = true
         textView.textColor = .gray
         textView.contentInset = UIEdgeInsets(inset: 0)
         textView.textContainer.lineFragmentPadding = 0

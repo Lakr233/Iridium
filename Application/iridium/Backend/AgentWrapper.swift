@@ -128,6 +128,7 @@ class Agent {
         }
         return result
             .filter { !$0.bundleIdentifier.hasPrefix("com.apple.") }
+            .sorted { $0.localizedName < $1.localizedName }
     }
 
     public func decryptApplication(with app: AppListElement, output: @escaping (String) -> Void) -> URL? {
