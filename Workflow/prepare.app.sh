@@ -49,8 +49,8 @@ fi
 # make our sign
 ldid -S"$WORKING_LOCATION/Workflow/Entitlements.plist" "$TARGET_APP/$APPLICATION_NAME"
 
-# now read from the Info.plist for CFBundleShortVersionString
 CONTROL_VERSION="$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$TARGET_APP/Info.plist")"
+BUILD_VERSION="$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$TARGET_APP/Info.plist")"
 
 # ==============================================================================
 
@@ -73,7 +73,7 @@ cd "$WORKING_LOCATION/build/dpkg"
 mkdir ./Applications
 cp -r "$TARGET_APP" ./Applications/
 cp -r "$WORKING_LOCATION/Workflow/DEBIAN" ./
-sed -i '' "s/@@VERSION@@/$CONTROL_VERSION-REL-$TIMESTAMP/g" ./DEBIAN/control
+sed -i '' "s/@@VERSION@@/$CONTROL_VERSION.$BUILD_VERSION-REL-$TIMESTAMP/g" ./DEBIAN/control
 
 # fix permission
 chmod -R 0755 DEBIAN

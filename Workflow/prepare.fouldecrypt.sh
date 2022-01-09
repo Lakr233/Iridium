@@ -39,7 +39,7 @@ cp -r "$FOUL_GIT_LOC" ./build/fouldecrypt.tfp0
 cd ./build/fouldecrypt.tfp0
 git reset --hard
 git clean -fdx
-sed -i.backup 's/# USE_LIBKRW = 1/export USE_LIBKRW = 1/g' Makefile
+sed -i.backup 's/# USE_TFP0 = 1/export USE_TFP0 = 1/g' Makefile
 echo "export ADDITIONAL_CFLAGS = -DTHEOS_LEAN_AND_MEAN -fobjc-arc" >> Makefile
 make -j "$MAKE_THREAD"
 cp "./.theos/obj/debug/fouldecrypt" ../tfp0
@@ -77,7 +77,9 @@ cp ./build/kernrw ./product/fouldecrypt.kernrw # /usr/lib/libkernrw.0.dylib
 cd product
 echo "Patching library search path..."
 
-install_name_tool -change /usr/lib/libkrw.0.dylib    "@executable_path/libkrw.0.dylib" fouldecrypt.tfp0
+# sorry there is no tfp0 dylib, there is my mistake
+
+# install_name_tool -change tfp0.dylib    "@executable_path/tfp0.dylib" fouldecrypt.tfp0
 install_name_tool -change /usr/lib/libkrw.0.dylib    "@executable_path/libkrw.0.dylib" fouldecrypt.krw
 install_name_tool -change /usr/lib/libkernrw.0.dylib "@executable_path/libkernrw.0.dylib" fouldecrypt.kernrw
 
