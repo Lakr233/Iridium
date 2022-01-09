@@ -3,7 +3,7 @@ import Foundation
 public struct AppListElement: Codable {
     public let bundleURL: URL
     public let bundleIdentifier: String
-    public let primaryIconDataBase64: String
+    public let primaryIconData: Data
     public let localizedName: String
     public let version: String
     public let shortVersion: String
@@ -11,14 +11,14 @@ public struct AppListElement: Codable {
     public init(
         bundleURL: URL,
         bundleIdentifier: String,
-        primaryIconDataBase64: String,
+        primaryIconData: Data,
         localizedName: String,
         version: String,
         shortVersion: String
     ) {
         self.bundleURL = bundleURL
         self.bundleIdentifier = bundleIdentifier
-        self.primaryIconDataBase64 = primaryIconDataBase64
+        self.primaryIconData = primaryIconData
         self.localizedName = localizedName
         self.version = version
         self.shortVersion = shortVersion

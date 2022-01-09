@@ -11,6 +11,7 @@ import Foundation
 import MachO
 import PropertyWrapper
 import SPIndicator
+import UIKit
 import ZipArchive
 
 private let binaryName = "AuxiliaryAgent"
@@ -107,7 +108,8 @@ class Agent {
         }
         let recipe = AuxiliaryExecute.spawn(
             command: binaryLocation.path,
-            args: ["exec", "whoami"]
+            args: ["exec", "whoami"],
+            timeout: 60
         )
         return recipe
             .stdout
@@ -120,7 +122,8 @@ class Agent {
         }
         let recipe = AuxiliaryExecute.spawn(
             command: binaryLocation.path,
-            args: ["list"]
+            args: ["list"],
+            timeout: 60
         )
         var result = [AppListElement]()
         if let apps = AppListTransfer.decode(jsonString: recipe.stdout) {
@@ -132,6 +135,20 @@ class Agent {
     }
 
     public func decryptApplication(with app: AppListElement, output: @escaping (String) -> Void) -> URL? {
+        #if DEBUG
+            if Thread.isMainThread {
+                fatalError(
+                    """
+                    this function should not be called from main thread
+                    because we are asking for user interaction later if failure occurred
+                    """
+                )
+            }
+        #endif
+
+        var possibleFailure = false
+        var wasInterrupted = false
+
         let originalBundleLocation = app.bundleURL
         output("TARGET:\n\(originalBundleLocation.path)\n")
         guard let binaryLocation = binaryLocation else {
@@ -139,7 +156,22 @@ class Agent {
             return nil
         }
         defer {
-            output("\n\nProcess Completed\n\n")
+            if !wasInterrupted {
+                output("\n\n")
+                output(
+                    """
+                    Resign and install may still need additional patch to package payload. You are on your own making those patches.
+                    """
+                )
+                output("\n\n")
+                if possibleFailure {
+                    output("\n\n==========\n\n")
+                    output("Invalid recipe was detected from backend!\n")
+                    output("Use this package with caution!\n")
+                    output("\n\n==========\n\n")
+                }
+            }
+            output("\n\n[Process Completed]\n\n")
         }
 
         // MARK: - STEP 1 - Make a copy of the bundle container
@@ -157,10 +189,11 @@ class Agent {
             attributes: nil
         )
         defer {
-            output("Cleaning temporary directory...\n")
+            output("\n[*] Cleaning temporary directory...\n")
             let recipe = AuxiliaryExecute.spawn(
                 command: binaryLocation.path,
-                args: ["delete", zipContainer.path]
+                args: ["delete", zipContainer.path],
+                timeout: 60
             )
             output(recipe.stdout)
             output(recipe.stderr)
@@ -168,13 +201,16 @@ class Agent {
         repeat {
             let recipe = AuxiliaryExecute.spawn(
                 command: binaryLocation.path,
-                args: ["copy", originalBundleLocation.path, processBundleLocation.path]
+                args: ["copy", originalBundleLocation.path, processBundleLocation.path],
+                timeout: 60
             )
             output(recipe.stdout)
             output(recipe.stderr)
         } while false
 
         // MARK: - STEP 2 - Enumerate entire app bundle to find all mach objects
+
+        output("\nSearching for mach objects...\n")
 
         var binaries = [(URL, URL)]() // the orig binary is at .0 and we decrypt it to .1
         repeat {
@@ -197,7 +233,7 @@ class Agent {
                     }
                     let magic = data.magic
                     if magic == MH_MAGIC_64 || magic == FAT_MAGIC_64 {
-                        output("\n[*] Binary at \(currentObjectFullPath.path)\n")
+                        output("[*] \(objectPath)\n")
                         binaries.append(
                             (
                                 originalBundleLocation.appendingPathComponent(objectPath),
@@ -214,7 +250,7 @@ class Agent {
         let foulBinary = foulOptionToUrl(with: foulOption)
         output("\n\n[*] Selecting backend \(foulBinary.path)\n\n")
         for (origBinary, destBinary) in binaries {
-            output("\n[*] Decrypter: \(origBinary.lastPathComponent)\n")
+            output("\n[*] Calling decryption on \(origBinary.lastPathComponent)\n")
             let recipe = AuxiliaryExecute.spawn(
                 command: binaryLocation.path,
                 args: [
@@ -223,11 +259,56 @@ class Agent {
                     "-v",
                     origBinary.path,
                     destBinary.path,
-                ]
-            ) { str in
-                output(str)
-            }
+                ],
+                timeout: 60
+            )
+            // no longer output them, too noising on normal return
             output("\n[*] Recipe: \(recipe.exitCode)\n")
+            if recipe.exitCode != 0 || recipe.error != nil {
+                possibleFailure = true
+                if let error = recipe.error {
+                    output("\n[*] AuxiliaryExecute Error: \(error.localizedDescription)")
+                }
+                output("\n[*] stdout\n")
+                output(recipe.stdout)
+                output("\n[*] stderr\n")
+                output(recipe.stderr)
+            }
+        }
+
+        // MARK: - STEP 3.5 - Fail if ever recipe none 0 but ask for that
+
+        if possibleFailure {
+            var shouldExit = true
+            let sem = DispatchSemaphore(value: 0)
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "⚠️", message: "Error occurred during decryption", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ignore", style: .destructive, handler: { _ in
+                    shouldExit = false
+                    sem.signal()
+                }))
+                alert.addAction(UIAlertAction(title: "Exit", style: .cancel, handler: { _ in
+                    shouldExit = true
+                    sem.signal()
+                }))
+                guard let controller = UIApplication
+                    .shared
+                    .windows
+                    .first?
+                    .topMostViewController
+                else {
+                    shouldExit = false
+                    sem.signal()
+                    return
+                }
+                controller.present(alert, animated: true, completion: nil)
+            }
+            sem.wait()
+            if shouldExit {
+                output("\n\n[*] Package process interrupted\n")
+                wasInterrupted = true
+                return nil
+            }
         }
 
         // MARK: - STEP 4 - Create installer file
@@ -252,7 +333,14 @@ class Agent {
         try? FileManager.default.removeItem(at: zipTarget)
 
         var currentProgress = [String]()
-        output("\n\nCreaing archive at \(zipTarget.path)\n")
+        output("\n\n[*] Creaing archive at \(zipTarget.path)\n\n")
+
+        let requiredDot = 25 // 4 percent each lol
+        output(
+            [String](repeating: ".", count: requiredDot)
+                .joined(separator: "")
+        )
+        output(" [100%]\n")
         SSZipArchive.createZipFile(
             atPath: zipTarget.path,
             withContentsOfDirectory: zipContainer.path,
@@ -262,13 +350,14 @@ class Agent {
             aes: false
         ) { entryNumber, total in
             let percent = Double(entryNumber) / Double(total)
-            let requiredDot = Double(20)
-            let currentDot = Int(percent * requiredDot)
+            let currentDot = Int(percent * Double(requiredDot))
             while currentDot > currentProgress.count {
                 currentProgress.append("=")
                 output("=")
             }
         }
+        output(" ++++++\n")
+
         output("\n\n")
 
         return zipTarget
@@ -312,7 +401,8 @@ class Agent {
         for url in urls {
             let recipe = AuxiliaryExecute.spawn(
                 command: binaryLocation.path,
-                args: ["delete", url.path]
+                args: ["delete", url.path],
+                timeout: 60
             )
             debugPrint(recipe)
         }

@@ -80,8 +80,8 @@ class AppCell: UITableViewCell {
     }
 
     func setApp(_ app: AppListElement) {
-        if let data = Data(base64Encoded: app.primaryIconDataBase64),
-           let image = UIImage(data: data)
+        if app.primaryIconData.count > 2, // at least 2 bytes or empty data
+           let image = UIImage(data: app.primaryIconData) // just for robustness
         {
             icon.image = image
         } else {

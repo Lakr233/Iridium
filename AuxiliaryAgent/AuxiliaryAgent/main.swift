@@ -61,7 +61,7 @@ if CommandLine.arguments[1] == "exec" {
             .infoDictionary?["CFBundleShortVersionString"] as? String
             ?? "0"
 
-        var iconBase64Str = ""
+        var iconData = Data()
         repeat {
             guard let contents = try? FileManager
                 .default
@@ -96,13 +96,13 @@ if CommandLine.arguments[1] == "exec" {
             else {
                 break
             }
-            iconBase64Str = data.base64EncodedString()
+            iconData = data
         } while false
 
         let element = AppListElement(
             bundleURL: bundle.bundleURL,
             bundleIdentifier: bundle.bundleIdentifier ?? "",
-            primaryIconDataBase64: iconBase64Str,
+            primaryIconData: iconData,
             localizedName: localizedDisplayName,
             version: version,
             shortVersion: shortVersion

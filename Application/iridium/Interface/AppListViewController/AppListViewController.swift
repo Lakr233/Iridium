@@ -6,7 +6,6 @@
 //
 
 import AppListProto
-import AuxiliaryExecute
 import SPIndicator
 import SwifterSwift
 import SwiftThrottle
