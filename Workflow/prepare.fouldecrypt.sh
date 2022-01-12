@@ -147,6 +147,12 @@ cp -r "$LIBKERNRW_GIT_LOC" ./build/libkernrw
 cd ./build/libkernrw
 git reset --hard
 git clean -fdx
+
+# make patch to Makefile
+# replace "xcrun -sdk iphoneos clang -arch arm64 -fobjc-arc"
+# to "xcrun -sdk iphoneos clang -arch arm64 -arch arm64e -fobjc-arc"
+sed -i.backup 's/xcrun -sdk iphoneos clang -arch arm64 -fobjc-arc/xcrun -sdk iphoneos clang -arch arm64 -arch arm64e -fobjc-arc/g' Makefile
+
 make -j "$MAKE_THREAD"
 
 cp ./bin/libkernrw.0.dylib "$WORKING_LOCATION/product/libkernrw.0.dylib"
@@ -162,6 +168,25 @@ rm -rf build || true
 
 cd "$WORKING_LOCATION"
 cd product
+
+echo "Validating binaries..."
+ARCH_INFO=$(lipo -info ./*)
+
+# iter over line of arch info
+while read -r line; do
+    # make sure contains "arm64 arm64e"
+    if [[ $line != *"arm64 arm64e"* ]]; then
+        echo "[E] invalid product"
+        echo "Please check the following line:"
+        echo "$line"
+        exit 1
+    fi
+done <<< "$ARCH_INFO"
+
+echo "$ARCH_INFO"
+
+echo "Binary products are valid."
+
 zip -r fouldecrypt.zip ./*
 mv fouldecrypt.zip ../
 
