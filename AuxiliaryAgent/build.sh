@@ -30,10 +30,15 @@ xcodebuild \
     -scheme "$PROJECT_NAME" \
     -configuration $CONFIGURATION \
     -archivePath ./build.xcarchive \
-    -sdk iphoneos \
+    -destination "generic/platform=iOS" \
     -derivedDataPath ./ \
-    ENABLE_BITCODE=NO CODE_SIGNING_ALLOWED=NO \
-    clean archive | xcpretty
+    clean archive \
+    ARCHS="arm64 arm64e" ONLY_ACTIVE_ARCH="NO" \
+    CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO" \
+    GCC_GENERATE_DEBUGGING_SYMBOLS=YES STRIP_INSTALLED_PRODUCT=NO \
+    ENABLE_BITCODE=NO \
+    COPY_PHASE_STRIP=NO UNSTRIPPED_PRODUCT=NO |
+    xcpretty
 
 # look for binary in archive dir and copy to build dir
 cp -f "./build.xcarchive/Products/Applications/$PROJECT_NAME.app/$PROJECT_NAME" "$PROJECT_NAME"
