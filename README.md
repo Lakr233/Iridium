@@ -24,6 +24,6 @@ Iridium is licensed under MIT License, other frameworks have their own license i
 
 ---
 
-20220.1.7
+2022.1.7
 
 Copyright © 2022 Lakr Aream. All rights reserved.

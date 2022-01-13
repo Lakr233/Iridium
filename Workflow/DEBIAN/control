@@ -7,3 +7,5 @@ Version: @@VERSION@@
 Section: Applications
 Pre-Depends: firmware (>= 13.0)
 Architecture: iphoneos-arm
+depiction: https://moreinfo.thebigboss.org/moreinfo/depiction.php?file=iridiumDp
+tag: purpose::uikit

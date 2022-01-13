@@ -102,6 +102,9 @@ for FILE in $FILE_LIST; do
     fi
 done
 
+# sort the list
+ARCH_LIST=($(printf "%s\n" "${ARCH_LIST[@]}" | sort))
+
 if [ ${#ARCH_LIST[@]} -eq 0 ]; then
     echo "[E] Failed to load any mach objects"
     exit 1

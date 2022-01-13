@@ -345,7 +345,7 @@ class Agent {
             atPath: zipTarget.path,
             withContentsOfDirectory: zipContainer.path,
             keepParentDirectory: false,
-            compressionLevel: 9,
+            compressionLevel: 0,
             password: nil,
             aes: false
         ) { entryNumber, total in
