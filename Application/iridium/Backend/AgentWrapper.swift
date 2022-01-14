@@ -333,7 +333,7 @@ class Agent {
         try? FileManager.default.removeItem(at: zipTarget)
 
         var currentProgress = [String]()
-        output("\n\n[*] Creaing archive at \(zipTarget.path)\n\n")
+        output("\n\n[*] Creating archive at \(zipTarget.path)\n\n")
 
         let requiredDot = 25 // 4 percent each lol
         output(
