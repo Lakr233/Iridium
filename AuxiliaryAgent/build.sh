@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 # cd script dir
 cd "$(dirname "$0")" || exit
@@ -25,6 +25,9 @@ fi
 
 PROJECT_NAME="AuxiliaryAgent"
 
+TEMP_LOG_FILE="$(mktemp)"
+echo "[i] build log will be written to $TEMP_LOG_FILE"
+
 xcodebuild \
     -workspace "../../App.xcworkspace" \
     -scheme "$PROJECT_NAME" \
@@ -37,8 +40,11 @@ xcodebuild \
     CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO" \
     GCC_GENERATE_DEBUGGING_SYMBOLS=YES STRIP_INSTALLED_PRODUCT=NO \
     ENABLE_BITCODE=NO \
-    COPY_PHASE_STRIP=NO UNSTRIPPED_PRODUCT=NO |
-    xcpretty
+    COPY_PHASE_STRIP=NO UNSTRIPPED_PRODUCT=NO \
+    &> "$TEMP_LOG_FILE"
+
+echo "[i] build passed, removing temp log file..."
+rm -f "$TEMP_LOG_FILE"
 
 # look for binary in archive dir and copy to build dir
 cp -f "./build.xcarchive/Products/Applications/$PROJECT_NAME.app/$PROJECT_NAME" "$PROJECT_NAME"

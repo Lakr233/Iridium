@@ -21,6 +21,11 @@ mkdir dpkg
 
 # ==============================================================================
 
+echo "[*] starting build..."
+
+TEMP_LOG_FILE="$(mktemp)"
+echo "[i] build log will be written to $TEMP_LOG_FILE"
+
 xcodebuild -workspace "$WORKING_LOCATION/App.xcworkspace" \
     -scheme "$APPLICATION_NAME" \
     -configuration Release \
@@ -31,8 +36,11 @@ xcodebuild -workspace "$WORKING_LOCATION/App.xcworkspace" \
     CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO" \
     GCC_GENERATE_DEBUGGING_SYMBOLS=YES STRIP_INSTALLED_PRODUCT=NO \
     ENABLE_BITCODE=NO \
-    COPY_PHASE_STRIP=NO UNSTRIPPED_PRODUCT=NO |
-    xcpretty
+    COPY_PHASE_STRIP=NO UNSTRIPPED_PRODUCT=NO \
+    &> "$TEMP_LOG_FILE"
+
+echo "[i] build passed, removing temp log file..."
+rm -f "$TEMP_LOG_FILE"
 
 # copy .app out of DerivedData
 DD_APP_PATH="$WORKING_LOCATION/build/DerivedDataApp/Build/Products/Release-iphoneos/$APPLICATION_NAME.app"
@@ -58,6 +66,8 @@ BUILD_VERSION="$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$TARGET_AP
 
 # build agent
 
+echo "[*] building agent..."
+
 "$WORKING_LOCATION/AuxiliaryAgent/build.sh"
 cp "$WORKING_LOCATION/AuxiliaryAgent/build/AuxiliaryAgent" "$WORKING_LOCATION/build/AuxiliaryAgent"
 
@@ -69,6 +79,8 @@ cd "$TARGET_APP"
 unzip "$WORKING_LOCATION/Workflow/fouldecrypt.zip"
 
 # ==============================================================================
+
+echo "[*] preparing package layout..."
 
 # make dpkg layer
 cd "$WORKING_LOCATION/build/dpkg"
@@ -83,12 +95,12 @@ chmod -R 0755 DEBIAN
 
 # verify every binary to have arm64 and arm64e
 echo ""
-echo "[*] Verifying binary architectures..."
+echo "[*] verifying binary architectures..."
 
 cd "$WORKING_LOCATION/build/dpkg"
 FILE_LIST=$(find . -type f)
-declare -a ARCH_LIST
-for FILE in $FILE_LIST; do
+
+while read -r FILE; do
     FILE_INFO=$(file "$FILE")
     if [[ $FILE_INFO == *"Mach-O"* ]]; then
         LIPO_INFO=$(lipo -info "$FILE")
@@ -98,23 +110,11 @@ for FILE in $FILE_LIST; do
             echo "$LIPO_INFO"
             exit 1
         fi
-        ARCH_LIST+=("$LIPO_INFO")
+        echo "$LIPO_INFO"
     fi
-done
+done <<< "$FILE_LIST"
 
-# sort the list
-ARCH_LIST=($(printf "%s\n" "${ARCH_LIST[@]}" | sort))
-
-if [ ${#ARCH_LIST[@]} -eq 0 ]; then
-    echo "[E] Failed to load any mach objects"
-    exit 1
-fi
-echo "[*] Loaded ${#ARCH_LIST[@]} mach objects"
-for ARCH in "${ARCH_LIST[@]}"; do
-    echo "[*] $ARCH"
-done
-
-echo "[*] Packaging..."
+echo "[*] packaging..."
 
 cd "$WORKING_LOCATION/build/dpkg"
 PKG_NAME="wiki.qaq.iridium.rel.ci.$TIMESTAMP.deb"
