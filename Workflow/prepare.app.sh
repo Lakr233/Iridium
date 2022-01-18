@@ -32,7 +32,7 @@ xcodebuild -workspace "$WORKING_LOCATION/App.xcworkspace" \
     -derivedDataPath "$WORKING_LOCATION/build/DerivedDataApp" \
     -destination 'generic/platform=iOS' \
     clean build \
-    ARCHS="arm64 arm64e" ONLY_ACTIVE_ARCH="NO" \
+    ARCHS="arm64" ONLY_ACTIVE_ARCH="NO" \
     CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO" \
     GCC_GENERATE_DEBUGGING_SYMBOLS=YES STRIP_INSTALLED_PRODUCT=NO \
     ENABLE_BITCODE=NO \
@@ -93,24 +93,23 @@ sed -i '' "s/@@VERSION@@/$CONTROL_VERSION.$BUILD_VERSION-REL-$TIMESTAMP/g" ./DEB
 cd "$WORKING_LOCATION/build/dpkg"
 chmod -R 0755 DEBIAN
 
-# verify every binary to have arm64 and arm64e
-echo ""
 echo "[*] verifying binary architectures..."
 
 cd "$WORKING_LOCATION/build/dpkg"
 FILE_LIST=$(find . -type f)
 
+# we have identified that arm64e binary not working on iOS 13
 while read -r FILE; do
     FILE_INFO=$(file "$FILE")
     if [[ $FILE_INFO == *"Mach-O"* ]]; then
+        if [[ $(lipo -info "$FILE") == *"arm64 arm64e"* ]]; then
+            lipo -thin arm64 -output "$FILE" "$FILE"
+        fi
         LIPO_INFO=$(lipo -info "$FILE")
-        if [[ $LIPO_INFO != *"arm64 arm64e"* ]]; then
-            echo "[E] invalid product"
-            echo "Please check the following line:"
-            echo "$LIPO_INFO"
+        if [[ $LIPO_INFO == *"arm64e"* ]]; then
+            echo "[!] $FILE containing arm64e architecture"
             exit 1
         fi
-        echo "$LIPO_INFO"
     fi
 done <<< "$FILE_LIST"
 
