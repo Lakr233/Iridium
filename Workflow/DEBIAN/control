@@ -5,7 +5,7 @@ Author: Lakr Aream <launchctl@outlook.com>
 Maintainer: Lakr Aream <launchctl@outlook.com>
 Version: @@VERSION@@
 Section: Applications
-Pre-Depends: firmware (>= 13.0)
+Pre-Depends: firmware (>= 13.5)
 Architecture: iphoneos-arm
 depiction: https://moreinfo.thebigboss.org/moreinfo/depiction.php?file=iridiumDp
 tag: purpose::uikit
