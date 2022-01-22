@@ -153,7 +153,7 @@ class DecrypterViewController: UIViewController {
                   available: {
                       self.decryptResult != nil
                   },
-                  action: { _ in
+                  action: { sourceController in
                       guard let item = self.decryptResult else {
                           return
                       }
@@ -161,6 +161,9 @@ class DecrypterViewController: UIViewController {
                           activityItems: [item],
                           applicationActivities: nil
                       )
+                      if let wppc = activityViewController.popoverPresentationController {
+                          wppc.sourceView = sourceController.view
+                      }
                       self.present(
                           activityViewController,
                           animated: true,

@@ -1,6 +1,6 @@
 # Iridium
 
-An iOS app decrypter, full static using fouldecrypt. Supporting iOS 13+
+An iOS app decrypter, full static using fouldecrypt. Supporting iOS 13.5+
 
 ![Preview](./Workflow/Preview/main.png)
 

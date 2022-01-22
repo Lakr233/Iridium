@@ -60,6 +60,7 @@ class Agent {
             } else {
                 #if DEBUG
                     debugPrint("binary for auxiliary agent was not found, ignored due to debug build")
+                    binaryLocation = URL(fileURLWithPath: "/\(UUID().uuidString)")
                 #else
                     fatalError("could not find auxiliary agent on system")
                 #endif
