@@ -56,7 +56,7 @@ class SettingView: UIViewController, UITableViewDelegate, UITableViewDataSource 
                 x.centerY.equalTo(imageView.snp.centerY)
             }
         case 2:
-            let text = "Version \(UIApplication.shared.version ?? "0.0") Build \(UIApplication.shared.buildNumber ?? "0")"
+            let text = "Version \(UIApplication.shared.version ?? "0.0") Build \(UIApplication.shared.buildNumber ?? "0") UID \(getuid()) GID \(getgid())"
             let view = makeTintTextView()
             view.text = text
             cell.contentView.addSubview(view)
@@ -82,7 +82,7 @@ class SettingView: UIViewController, UITableViewDelegate, UITableViewDataSource 
             view.addTarget(self, action: #selector(openArchive), for: .touchUpInside)
         case 4:
             let view = makeLeftAligButton()
-            view.setTitle("Select KernInfra Backend", for: .normal)
+            view.setTitle("Select Backend: AppDecrypt", for: .normal)
             cell.contentView.addSubview(view)
             view.snp.makeConstraints { x in
                 x.left.equalToSuperview().offset(padding)
@@ -90,7 +90,6 @@ class SettingView: UIViewController, UITableViewDelegate, UITableViewDataSource 
                 x.bottom.equalToSuperview()
                 x.width.equalTo(250)
             }
-            view.addTarget(self, action: #selector(selectBackend), for: .touchUpInside)
         case 5:
             let view = makeLeftAligButton()
             view.setTitle("Clear Documents", for: .normal)
@@ -134,7 +133,7 @@ class SettingView: UIViewController, UITableViewDelegate, UITableViewDataSource 
             view.addTarget(self, action: #selector(openSourceIridium), for: .touchUpInside)
         case 8:
             let view = makeLeftAligButton()
-            view.setTitle("Get Source: [FoulDecrypt]", for: .normal)
+            view.setTitle("___", for: .normal)
             cell.contentView.addSubview(view)
             view.snp.makeConstraints { x in
                 x.left.equalToSuperview().offset(padding)
@@ -142,7 +141,6 @@ class SettingView: UIViewController, UITableViewDelegate, UITableViewDataSource 
                 x.bottom.equalToSuperview()
                 x.width.equalTo(250)
             }
-            view.addTarget(self, action: #selector(openSourceFoul), for: .touchUpInside)
         case 9:
             let view = makeTintTextView()
             view.text = """
@@ -227,11 +225,6 @@ class SettingView: UIViewController, UITableViewDelegate, UITableViewDataSource 
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
-    @objc func openSourceFoul() {
-        let url = URL(string: "https://github.com/NyaMisty/fouldecrypt")!
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
-
     @objc func openTwitter() {
         let url = URL(string: "https://twitter.com/Lakr233")!
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -246,38 +239,6 @@ class SettingView: UIViewController, UITableViewDelegate, UITableViewDataSource 
     struct SelectAction {
         let text: String
         let action: (UIViewController) -> Void
-    }
-
-    func buildActionList() -> [SelectAction] {
-        [
-            .init(text: "Auto Switch", action: { _ in
-                Agent.shared.foulOption = .unspecified
-            }),
-            .init(text: "TFP0", action: { _ in
-                Agent.shared.foulOption = .tfp0
-            }),
-            .init(text: "KRW - uncover", action: { _ in
-                Agent.shared.foulOption = .krw
-            }),
-            .init(text: "KERNRW - taurine", action: { _ in
-                Agent.shared.foulOption = .kernrw
-            }),
-            .init(text: "Cancel", action: { _ in }),
-        ]
-    }
-
-    @objc func selectBackend(sender: UIButton) {
-        let actions = buildActionList()
-        let dropDown = DropDown(anchorView: sender)
-        dropDown.dataSource = actions
-            .map(\.text)
-            .invisibleSpacePadding()
-        dropDown.selectionAction = { [self] (index: Int, _: String) in
-            guard index >= 0, index < actions.count else { return }
-            let action = actions[index]
-            action.action(self)
-        }
-        dropDown.show(onTopOf: view.window)
     }
 
     @objc func clearDocuments(sender: UIButton) {

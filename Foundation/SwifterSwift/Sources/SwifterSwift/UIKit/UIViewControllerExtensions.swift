@@ -67,7 +67,7 @@
                 })
                 alertController.addAction(action)
                 // Check which button to highlight
-                if let highlightedButtonIndex = highlightedButtonIndex, index == highlightedButtonIndex {
+                if let highlightedButtonIndex, index == highlightedButtonIndex {
                     alertController.preferredAction = action
                 }
             }
@@ -108,7 +108,7 @@
             func presentPopover(_ popoverContent: UIViewController, sourcePoint: CGPoint, size: CGSize? = nil, delegate: UIPopoverPresentationControllerDelegate? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
                 popoverContent.modalPresentationStyle = .popover
 
-                if let size = size {
+                if let size {
                     popoverContent.preferredContentSize = size
                 }
 

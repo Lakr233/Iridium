@@ -2,7 +2,6 @@
 import XCTest
 
 final class AuxiliaryExecuteTests: XCTestCase {
-    
     func testMain() throws {
         XCTAssertNotNil(Int(exactly: AuxiliaryExecute.maxTimeoutValue))
         XCTAssertNotNil(Int32(exactly: AuxiliaryExecute.maxTimeoutValue))
@@ -69,7 +68,7 @@ final class AuxiliaryExecuteTests: XCTestCase {
             XCTAssert(result.error == .timeout)
         }
     }
-    
+
     @available(macOS 12.0.0, *)
     func testAsync() async throws {
         do {
@@ -86,7 +85,7 @@ final class AuxiliaryExecuteTests: XCTestCase {
             XCTAssertEqual(result.exitCode, 0)
             XCTAssert(result.stdout.contains("Darwin Kernel"))
         }
-        
+
         do {
             let result = await AuxiliaryExecute.spawnAsync(
                 command: "/usr/bin/tail",
@@ -102,5 +101,4 @@ final class AuxiliaryExecuteTests: XCTestCase {
             XCTAssertEqual(result.error, .timeout)
         }
     }
-    
 }

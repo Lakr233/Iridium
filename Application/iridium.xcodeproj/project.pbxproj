@@ -7,12 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		501EFAD92945B65200208827 /* GiveMeRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 501EFAD82945B65200208827 /* GiveMeRoot.m */; };
+		501EFADB2945BC7600208827 /* AppList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501EFADA2945BC7600208827 /* AppList.swift */; };
 		506ACD7E2787531F0007ACAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506ACD7D2787531F0007ACAA /* AppDelegate.swift */; };
 		506ACD802787531F0007ACAA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506ACD7F2787531F0007ACAA /* SceneDelegate.swift */; };
 		506ACD822787531F0007ACAA /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506ACD812787531F0007ACAA /* AppListViewController.swift */; };
 		506ACD852787531F0007ACAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506ACD832787531F0007ACAA /* Main.storyboard */; };
 		506ACD872787531F0007ACAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506ACD862787531F0007ACAA /* Assets.xcassets */; };
 		506ACD8A2787531F0007ACAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506ACD882787531F0007ACAA /* LaunchScreen.storyboard */; };
+		508012CD2945CB9500057AD4 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012AC2945CB9500057AD4 /* DataView.swift */; };
+		508012CE2945CB9500057AD4 /* DataConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012AD2945CB9500057AD4 /* DataConvertible.swift */; };
+		508012CF2945CB9500057AD4 /* BinaryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012AE2945CB9500057AD4 /* BinaryError.swift */; };
+		508012D02945CB9500057AD4 /* Int+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012B02945CB9500057AD4 /* Int+Convenience.swift */; };
+		508012D12945CB9500057AD4 /* FLXLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012B22945CB9500057AD4 /* FLXLog.swift */; };
+		508012D22945CB9500057AD4 /* DecryptFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012B42945CB9500057AD4 /* DecryptFile.swift */; };
+		508012D42945CB9500057AD4 /* FLXSystemApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 508012B72945CB9500057AD4 /* FLXSystemApi.m */; };
+		508012D52945CB9500057AD4 /* FLXPrivateApi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 508012B82945CB9500057AD4 /* FLXPrivateApi.mm */; };
+		508012D62945CB9500057AD4 /* PlatformSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 508012BB2945CB9500057AD4 /* PlatformSetup.m */; };
+		508012D72945CB9500057AD4 /* MachOSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012BE2945CB9500057AD4 /* MachOSlice.swift */; };
+		508012D82945CB9500057AD4 /* MachOBinary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012BF2945CB9500057AD4 /* MachOBinary.swift */; };
+		508012D92945CB9500057AD4 /* MachOError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012C02945CB9500057AD4 /* MachOError.swift */; };
+		508012DA2945CB9500057AD4 /* MachOHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012C22945CB9500057AD4 /* MachOHeader.swift */; };
+		508012DB2945CB9500057AD4 /* MachOHeader+DataConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012C32945CB9500057AD4 /* MachOHeader+DataConvertible.swift */; };
+		508012DC2945CB9500057AD4 /* MachOSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012C42945CB9500057AD4 /* MachOSegment.swift */; };
+		508012DD2945CB9500057AD4 /* MachOStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012C52945CB9500057AD4 /* MachOStructs.swift */; };
+		508012DE2945CB9500057AD4 /* ArchitectureValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012C62945CB9500057AD4 /* ArchitectureValue.swift */; };
+		508012DF2945CB9500057AD4 /* MachOLoadCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012C72945CB9500057AD4 /* MachOLoadCommand.swift */; };
+		508012E02945CB9500057AD4 /* MachOEncryptionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012C82945CB9500057AD4 /* MachOEncryptionInfo.swift */; };
+		508012E12945CB9500057AD4 /* MachOFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012C92945CB9500057AD4 /* MachOFile.swift */; };
+		508012E22945CB9500057AD4 /* MachOFile+SpawnDecrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012CB2945CB9500057AD4 /* MachOFile+SpawnDecrypt.swift */; };
+		508012E32945CB9500057AD4 /* MachOFile+Decrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508012CC2945CB9500057AD4 /* MachOFile+Decrypt.swift */; };
+		508012E62945CBC400057AD4 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 508012E52945CBC400057AD4 /* ArgumentParser */; };
 		50B0BEB02787E16B00A0963F /* SwiftThrottle in Frameworks */ = {isa = PBXBuildFile; productRef = 50B0BEAF2787E16B00A0963F /* SwiftThrottle */; };
 		50B0BEB22787E62100A0963F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0BEB12787E62100A0963F /* Extension.swift */; };
 		50B0BEB82787EA8700A0963F /* AgentWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0BEB72787EA8700A0963F /* AgentWrapper.swift */; };
@@ -26,13 +51,17 @@
 		50DC8AD92787717D003F4A31 /* AppListViewController+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DC8AD82787717D003F4A31 /* AppListViewController+SearchBar.swift */; };
 		50F97EBD2787548A00D0D3B7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 50F97EBC2787548A00D0D3B7 /* SnapKit */; };
 		50F97EBF2787548C00D0D3B7 /* ZipArchive in Frameworks */ = {isa = PBXBuildFile; productRef = 50F97EBE2787548C00D0D3B7 /* ZipArchive */; };
-		50F97EE62787562000D0D3B7 /* AppListProto in Frameworks */ = {isa = PBXBuildFile; productRef = 50F97EE52787562000D0D3B7 /* AppListProto */; };
 		50F97EE82787562300D0D3B7 /* AuxiliaryExecute in Frameworks */ = {isa = PBXBuildFile; productRef = 50F97EE72787562300D0D3B7 /* AuxiliaryExecute */; };
 		50F97EEA2787562800D0D3B7 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 50F97EE92787562800D0D3B7 /* SPIndicator */; };
 		50F97EEC2787562A00D0D3B7 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50F97EEB2787562A00D0D3B7 /* SwifterSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		501EFACF2945A46200208827 /* iridium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iridium.entitlements; sourceTree = "<group>"; };
+		501EFAD62945B62700208827 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		501EFAD72945B65200208827 /* GiveMeRoot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiveMeRoot.h; sourceTree = "<group>"; };
+		501EFAD82945B65200208827 /* GiveMeRoot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiveMeRoot.m; sourceTree = "<group>"; };
+		501EFADA2945BC7600208827 /* AppList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppList.swift; sourceTree = "<group>"; };
 		506ACD7A2787531F0007ACAA /* iridium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iridium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		506ACD7D2787531F0007ACAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		506ACD7F2787531F0007ACAA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +70,34 @@
 		506ACD862787531F0007ACAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		506ACD892787531F0007ACAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		506ACD8B2787531F0007ACAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		508012AA2945CB9500057AD4 /* BridgingFlex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingFlex.h; sourceTree = "<group>"; };
+		508012AC2945CB9500057AD4 /* DataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
+		508012AD2945CB9500057AD4 /* DataConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataConvertible.swift; sourceTree = "<group>"; };
+		508012AE2945CB9500057AD4 /* BinaryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryError.swift; sourceTree = "<group>"; };
+		508012B02945CB9500057AD4 /* Int+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Convenience.swift"; sourceTree = "<group>"; };
+		508012B22945CB9500057AD4 /* FLXLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLXLog.swift; sourceTree = "<group>"; };
+		508012B42945CB9500057AD4 /* DecryptFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecryptFile.swift; sourceTree = "<group>"; };
+		508012B72945CB9500057AD4 /* FLXSystemApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXSystemApi.m; sourceTree = "<group>"; };
+		508012B82945CB9500057AD4 /* FLXPrivateApi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FLXPrivateApi.mm; sourceTree = "<group>"; };
+		508012B92945CB9500057AD4 /* PlatformSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformSetup.h; sourceTree = "<group>"; };
+		508012BA2945CB9500057AD4 /* FLXSystemApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXSystemApi.h; sourceTree = "<group>"; };
+		508012BB2945CB9500057AD4 /* PlatformSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformSetup.m; sourceTree = "<group>"; };
+		508012BC2945CB9500057AD4 /* FLXPrivateApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXPrivateApi.h; sourceTree = "<group>"; };
+		508012BE2945CB9500057AD4 /* MachOSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachOSlice.swift; sourceTree = "<group>"; };
+		508012BF2945CB9500057AD4 /* MachOBinary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachOBinary.swift; sourceTree = "<group>"; };
+		508012C02945CB9500057AD4 /* MachOError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachOError.swift; sourceTree = "<group>"; };
+		508012C22945CB9500057AD4 /* MachOHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachOHeader.swift; sourceTree = "<group>"; };
+		508012C32945CB9500057AD4 /* MachOHeader+DataConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MachOHeader+DataConvertible.swift"; sourceTree = "<group>"; };
+		508012C42945CB9500057AD4 /* MachOSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachOSegment.swift; sourceTree = "<group>"; };
+		508012C52945CB9500057AD4 /* MachOStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachOStructs.swift; sourceTree = "<group>"; };
+		508012C62945CB9500057AD4 /* ArchitectureValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchitectureValue.swift; sourceTree = "<group>"; };
+		508012C72945CB9500057AD4 /* MachOLoadCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachOLoadCommand.swift; sourceTree = "<group>"; };
+		508012C82945CB9500057AD4 /* MachOEncryptionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachOEncryptionInfo.swift; sourceTree = "<group>"; };
+		508012C92945CB9500057AD4 /* MachOFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachOFile.swift; sourceTree = "<group>"; };
+		508012CB2945CB9500057AD4 /* MachOFile+SpawnDecrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MachOFile+SpawnDecrypt.swift"; sourceTree = "<group>"; };
+		508012CC2945CB9500057AD4 /* MachOFile+Decrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MachOFile+Decrypt.swift"; sourceTree = "<group>"; };
+		508012E42945CBB800057AD4 /* swift-argument-parser */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "swift-argument-parser"; path = "../../../../../../../Desktop/swift-argument-parser"; sourceTree = "<group>"; };
+		508012E72945CBEB00057AD4 /* mach_vm_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mach_vm_private.h; sourceTree = "<group>"; };
 		50B0BEB12787E62100A0963F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		50B0BEB72787EA8700A0963F /* AgentWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentWrapper.swift; sourceTree = "<group>"; };
 		50B0BEC02787F71F00A0963F /* DecrypterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecrypterViewController.swift; sourceTree = "<group>"; };
@@ -57,9 +114,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F97EBD2787548A00D0D3B7 /* SnapKit in Frameworks */,
-				50F97EE62787562000D0D3B7 /* AppListProto in Frameworks */,
 				50F97EBF2787548C00D0D3B7 /* ZipArchive in Frameworks */,
 				50F97EEC2787562A00D0D3B7 /* SwifterSwift in Frameworks */,
+				508012E62945CBC400057AD4 /* ArgumentParser in Frameworks */,
 				50F97EEA2787562800D0D3B7 /* SPIndicator in Frameworks */,
 				50B0BEC727880B8400A0963F /* PropertyWrapper in Frameworks */,
 				50B0BEBA2787ED6C00A0963F /* DropDown in Frameworks */,
@@ -71,6 +128,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501EFAD42945B60F00208827 /* Agent */ = {
+			isa = PBXGroup;
+			children = (
+				50B0BEB72787EA8700A0963F /* AgentWrapper.swift */,
+				501EFADA2945BC7600208827 /* AppList.swift */,
+			);
+			path = Agent;
+			sourceTree = "<group>";
+		};
+		501EFAD52945B61600208827 /* GiveMeRoot */ = {
+			isa = PBXGroup;
+			children = (
+				501EFAD72945B65200208827 /* GiveMeRoot.h */,
+				501EFAD82945B65200208827 /* GiveMeRoot.m */,
+			);
+			path = GiveMeRoot;
+			sourceTree = "<group>";
+		};
 		506ACD712787531F0007ACAA = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +166,7 @@
 		506ACD7C2787531F0007ACAA /* iridium */ = {
 			isa = PBXGroup;
 			children = (
+				501EFACF2945A46200208827 /* iridium.entitlements */,
 				50B0BEB62787EA2900A0963F /* App */,
 				50B0BEB32787E9E500A0963F /* Backend */,
 				50DC8AD027876F9D003F4A31 /* Ress */,
@@ -102,10 +178,112 @@
 			path = iridium;
 			sourceTree = "<group>";
 		};
+		508012A92945CB8F00057AD4 /* FLEX */ = {
+			isa = PBXGroup;
+			children = (
+				508012E42945CBB800057AD4 /* swift-argument-parser */,
+				508012AA2945CB9500057AD4 /* BridgingFlex.h */,
+				508012AB2945CB9500057AD4 /* Binary Reading */,
+				508012B62945CB9500057AD4 /* C API Wrappers */,
+				508012B32945CB9500057AD4 /* Commands */,
+				508012B12945CB9500057AD4 /* Debugging */,
+				508012AF2945CB9500057AD4 /* Extensions */,
+				508012BD2945CB9500057AD4 /* Mach-O */,
+			);
+			path = FLEX;
+			sourceTree = "<group>";
+		};
+		508012AB2945CB9500057AD4 /* Binary Reading */ = {
+			isa = PBXGroup;
+			children = (
+				508012AC2945CB9500057AD4 /* DataView.swift */,
+				508012AD2945CB9500057AD4 /* DataConvertible.swift */,
+				508012AE2945CB9500057AD4 /* BinaryError.swift */,
+			);
+			path = "Binary Reading";
+			sourceTree = "<group>";
+		};
+		508012AF2945CB9500057AD4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				508012B02945CB9500057AD4 /* Int+Convenience.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		508012B12945CB9500057AD4 /* Debugging */ = {
+			isa = PBXGroup;
+			children = (
+				508012B22945CB9500057AD4 /* FLXLog.swift */,
+			);
+			path = Debugging;
+			sourceTree = "<group>";
+		};
+		508012B32945CB9500057AD4 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				508012B42945CB9500057AD4 /* DecryptFile.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		508012B62945CB9500057AD4 /* C API Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				508012BA2945CB9500057AD4 /* FLXSystemApi.h */,
+				508012B72945CB9500057AD4 /* FLXSystemApi.m */,
+				508012BC2945CB9500057AD4 /* FLXPrivateApi.h */,
+				508012B82945CB9500057AD4 /* FLXPrivateApi.mm */,
+				508012B92945CB9500057AD4 /* PlatformSetup.h */,
+				508012BB2945CB9500057AD4 /* PlatformSetup.m */,
+				508012E72945CBEB00057AD4 /* mach_vm_private.h */,
+			);
+			path = "C API Wrappers";
+			sourceTree = "<group>";
+		};
+		508012BD2945CB9500057AD4 /* Mach-O */ = {
+			isa = PBXGroup;
+			children = (
+				508012BE2945CB9500057AD4 /* MachOSlice.swift */,
+				508012BF2945CB9500057AD4 /* MachOBinary.swift */,
+				508012C02945CB9500057AD4 /* MachOError.swift */,
+				508012C12945CB9500057AD4 /* Structure */,
+				508012C92945CB9500057AD4 /* MachOFile.swift */,
+				508012CA2945CB9500057AD4 /* Decrypt */,
+			);
+			path = "Mach-O";
+			sourceTree = "<group>";
+		};
+		508012C12945CB9500057AD4 /* Structure */ = {
+			isa = PBXGroup;
+			children = (
+				508012C22945CB9500057AD4 /* MachOHeader.swift */,
+				508012C32945CB9500057AD4 /* MachOHeader+DataConvertible.swift */,
+				508012C42945CB9500057AD4 /* MachOSegment.swift */,
+				508012C52945CB9500057AD4 /* MachOStructs.swift */,
+				508012C62945CB9500057AD4 /* ArchitectureValue.swift */,
+				508012C72945CB9500057AD4 /* MachOLoadCommand.swift */,
+				508012C82945CB9500057AD4 /* MachOEncryptionInfo.swift */,
+			);
+			path = Structure;
+			sourceTree = "<group>";
+		};
+		508012CA2945CB9500057AD4 /* Decrypt */ = {
+			isa = PBXGroup;
+			children = (
+				508012CB2945CB9500057AD4 /* MachOFile+SpawnDecrypt.swift */,
+				508012CC2945CB9500057AD4 /* MachOFile+Decrypt.swift */,
+			);
+			path = Decrypt;
+			sourceTree = "<group>";
+		};
 		50B0BEB32787E9E500A0963F /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				50B0BEB72787EA8700A0963F /* AgentWrapper.swift */,
+				501EFAD62945B62700208827 /* Bridge.h */,
+				501EFAD42945B60F00208827 /* Agent */,
+				508012A92945CB8F00057AD4 /* FLEX */,
+				501EFAD52945B61600208827 /* GiveMeRoot */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -192,13 +370,13 @@
 			packageProductDependencies = (
 				50F97EBC2787548A00D0D3B7 /* SnapKit */,
 				50F97EBE2787548C00D0D3B7 /* ZipArchive */,
-				50F97EE52787562000D0D3B7 /* AppListProto */,
 				50F97EE72787562300D0D3B7 /* AuxiliaryExecute */,
 				50F97EE92787562800D0D3B7 /* SPIndicator */,
 				50F97EEB2787562A00D0D3B7 /* SwifterSwift */,
 				50B0BEAF2787E16B00A0963F /* SwiftThrottle */,
 				50B0BEB92787ED6C00A0963F /* DropDown */,
 				50B0BEC627880B8400A0963F /* PropertyWrapper */,
+				508012E52945CBC400057AD4 /* ArgumentParser */,
 			);
 			productName = iridium;
 			productReference = 506ACD7A2787531F0007ACAA /* iridium.app */;
@@ -255,16 +433,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				508012E22945CB9500057AD4 /* MachOFile+SpawnDecrypt.swift in Sources */,
 				50DC8AD72787715F003F4A31 /* AppCell.swift in Sources */,
 				506ACD822787531F0007ACAA /* AppListViewController.swift in Sources */,
 				50DC8AD92787717D003F4A31 /* AppListViewController+SearchBar.swift in Sources */,
+				508012DC2945CB9500057AD4 /* MachOSegment.swift in Sources */,
+				508012D12945CB9500057AD4 /* FLXLog.swift in Sources */,
+				508012D92945CB9500057AD4 /* MachOError.swift in Sources */,
 				506ACD7E2787531F0007ACAA /* AppDelegate.swift in Sources */,
+				508012DA2945CB9500057AD4 /* MachOHeader.swift in Sources */,
+				501EFAD92945B65200208827 /* GiveMeRoot.m in Sources */,
+				508012D62945CB9500057AD4 /* PlatformSetup.m in Sources */,
+				508012D22945CB9500057AD4 /* DecryptFile.swift in Sources */,
+				508012CE2945CB9500057AD4 /* DataConvertible.swift in Sources */,
+				508012DD2945CB9500057AD4 /* MachOStructs.swift in Sources */,
 				50DC8AD527877152003F4A31 /* AppListViewController+TableView.swift in Sources */,
+				508012E32945CB9500057AD4 /* MachOFile+Decrypt.swift in Sources */,
+				508012D02945CB9500057AD4 /* Int+Convenience.swift in Sources */,
 				50B0BEC12787F71F00A0963F /* DecrypterViewController.swift in Sources */,
 				50B0BEB82787EA8700A0963F /* AgentWrapper.swift in Sources */,
+				508012E12945CB9500057AD4 /* MachOFile.swift in Sources */,
+				508012D82945CB9500057AD4 /* MachOBinary.swift in Sources */,
+				508012DE2945CB9500057AD4 /* ArchitectureValue.swift in Sources */,
+				508012D52945CB9500057AD4 /* FLXPrivateApi.mm in Sources */,
 				50B0BEC52788022B00A0963F /* main.swift in Sources */,
 				50B0BEC927881B1F00A0963F /* SettingView.swift in Sources */,
+				508012D42945CB9500057AD4 /* FLXSystemApi.m in Sources */,
+				508012DF2945CB9500057AD4 /* MachOLoadCommand.swift in Sources */,
+				508012E02945CB9500057AD4 /* MachOEncryptionInfo.swift in Sources */,
+				508012CF2945CB9500057AD4 /* BinaryError.swift in Sources */,
+				508012D72945CB9500057AD4 /* MachOSlice.swift in Sources */,
+				508012CD2945CB9500057AD4 /* DataView.swift in Sources */,
 				506ACD802787531F0007ACAA /* SceneDelegate.swift in Sources */,
+				508012DB2945CB9500057AD4 /* MachOHeader+DataConvertible.swift in Sources */,
+				501EFADB2945BC7600208827 /* AppList.swift in Sources */,
 				50B0BEB22787E62100A0963F /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,11 +614,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_ENTITLEMENTS = iridium/iridium.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
-				DEVELOPMENT_TEAM = GXZ23M5TP2;
+				DEVELOPMENT_TEAM = M4Z5DVY94F;
 				ENABLE_BITCODE = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iridium/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Iridium;
@@ -425,18 +630,21 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = wiki.qaq.iridium;
+				PRODUCT_BUNDLE_IDENTIFIER = wiki.qaq.iridium.rootless;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "QAQ Wiki iOS";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = ./Iridium/Backend/Bridge.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,11 +655,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_ENTITLEMENTS = iridium/iridium.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
-				DEVELOPMENT_TEAM = GXZ23M5TP2;
+				DEVELOPMENT_TEAM = M4Z5DVY94F;
 				ENABLE_BITCODE = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iridium/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Iridium;
@@ -460,18 +671,21 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = wiki.qaq.iridium;
+				PRODUCT_BUNDLE_IDENTIFIER = wiki.qaq.iridium.rootless;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "QAQ Wiki iOS";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = ./Iridium/Backend/Bridge.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -501,6 +715,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		508012E52945CBC400057AD4 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ArgumentParser;
+		};
 		50B0BEAF2787E16B00A0963F /* SwiftThrottle */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftThrottle;
@@ -520,10 +738,6 @@
 		50F97EBE2787548C00D0D3B7 /* ZipArchive */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ZipArchive;
-		};
-		50F97EE52787562000D0D3B7 /* AppListProto */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppListProto;
 		};
 		50F97EE72787562300D0D3B7 /* AuxiliaryExecute */ = {
 			isa = XCSwiftPackageProductDependency;

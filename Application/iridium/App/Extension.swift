@@ -42,7 +42,7 @@ extension UIViewController {
     }
 }
 
-extension Array where Element == String {
+extension [String] {
     func invisibleSpacePadding() -> Self {
         // padding it 🥺
         map { "⁠\u{200b}   \($0)⁠   \u{200b}" }

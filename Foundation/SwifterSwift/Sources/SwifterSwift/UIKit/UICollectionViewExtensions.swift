@@ -108,7 +108,7 @@
         /// - Parameters:
         ///   - nib: Nib file used to create the collectionView cell.
         ///   - name: UICollectionViewCell type.
-        func register<T: UICollectionViewCell>(nib: UINib?, forCellWithClass name: T.Type) {
+        func register(nib: UINib?, forCellWithClass name: (some UICollectionViewCell).Type) {
             register(nib, forCellWithReuseIdentifier: String(describing: name))
         }
 
@@ -125,7 +125,7 @@
         ///   - nib: Nib file used to create the reusable view.
         ///   - kind: the kind of supplementary view to retrieve. This value is defined by the layout object.
         ///   - name: UICollectionReusableView type.
-        func register<T: UICollectionReusableView>(nib: UINib?, forSupplementaryViewOfKind kind: String, withClass name: T.Type) {
+        func register(nib: UINib?, forSupplementaryViewOfKind kind: String, withClass name: (some UICollectionReusableView).Type) {
             register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: String(describing: name))
         }
 
@@ -135,7 +135,7 @@
         /// - Parameters:
         ///   - name: UICollectionViewCell type.
         ///   - bundleClass: Class in which the Bundle instance will be based on.
-        func register<T: UICollectionViewCell>(nibWithCellClass name: T.Type, at bundleClass: AnyClass? = nil) {
+        func register(nibWithCellClass name: (some UICollectionViewCell).Type, at bundleClass: AnyClass? = nil) {
             let identifier = String(describing: name)
             var bundle: Bundle?
 

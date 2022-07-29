@@ -39,7 +39,7 @@
         ///   - string: The URL string with which to initialize the `URL` object. Must conform to RFC 2396. `string` is interpreted relative to `url`.
         ///   - url: The base URL for the `URL` object.
         init?(string: String?, relativeTo url: URL? = nil) {
-            guard let string = string else { return nil }
+            guard let string else { return nil }
             self.init(string: string, relativeTo: url)
         }
     }
@@ -118,7 +118,7 @@
         ///        let url = URL(string: "https://domain.com")!
         ///        print(url.droppedScheme()) // prints "domain.com"
         func droppedScheme() -> URL? {
-            if let scheme = scheme {
+            if let scheme {
                 let droppedScheme = String(absoluteString.dropFirst(scheme.count + 3))
                 return URL(string: droppedScheme)
             }

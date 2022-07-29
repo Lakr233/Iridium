@@ -5,13 +5,7 @@
       location = "group:Application/iridium.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:AuxiliaryAgent/AuxiliaryAgent.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Foundation/AuxiliaryExecute">
-   </FileRef>
-   <FileRef
-      location = "group:Foundation/AppListProto">
    </FileRef>
    <FileRef
       location = "group:Foundation/DropDown">

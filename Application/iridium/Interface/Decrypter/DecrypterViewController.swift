@@ -5,7 +5,6 @@
 //  Created by Lakr Aream on 2022/1/7.
 //
 
-import AppListProto
 import DropDown
 import SnapKit
 import UIKit
@@ -118,6 +117,7 @@ class DecrypterViewController: UIViewController {
                 self.appendLog(str: "Malformed application datagram.\n")
                 self.appendLog(str: "Missing parameter for bundle url when calling \(#function).\n")
             }
+            self.appendLog(str: "\n\n\n\n\n\n")
             DispatchQueue.main.async {
                 self.activeCompleteButton()
             }

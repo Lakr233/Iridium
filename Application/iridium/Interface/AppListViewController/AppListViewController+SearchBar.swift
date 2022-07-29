@@ -5,7 +5,6 @@
 //  Created by Lakr Aream on 2022/1/7.
 //
 
-import AppListProto
 import SwiftThrottle
 import UIKit
 

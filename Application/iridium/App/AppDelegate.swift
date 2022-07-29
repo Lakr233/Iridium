@@ -30,24 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appearance.layer.shadowOpacity = 0.1
             appearance.cellHeight = 60
         }
-
-        if !Agent.shared.agentPermissionValidate() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                if Agent.shared.binaryLocation == nil {
-                    SPIndicator.present(
-                        title: "Auxiliary Agent Missing",
-                        preset: .error,
-                        haptic: .error
-                    )
-                } else {
-                    SPIndicator.present(
-                        title: "Agent Error Permit",
-                        preset: .error,
-                        haptic: .error
-                    )
-                }
-            }
-        }
     }
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

@@ -17,7 +17,7 @@ public extension StringProtocol {
     ///     - Parameter aString: The string with which to compare the receiver.
     ///     - Parameter options: Options for the comparison.
     /// - Returns: The longest common suffix of the receiver and the given String
-    func commonSuffix<T: StringProtocol>(with aString: T, options: String.CompareOptions = []) -> String {
+    func commonSuffix(with aString: some StringProtocol, options: String.CompareOptions = []) -> String {
         guard !isEmpty, !aString.isEmpty else { return "" }
 
         var idx = endIndex

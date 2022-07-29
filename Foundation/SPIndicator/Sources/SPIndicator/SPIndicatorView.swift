@@ -92,7 +92,7 @@ import UIKit
             commonInit()
             layout = SPIndicatorLayout(for: preset)
             setTitle(title)
-            if let message = message {
+            if let message {
                 setMessage(message)
             }
             setIcon(for: preset)
@@ -105,7 +105,7 @@ import UIKit
             commonInit()
             layout = SPIndicatorLayout.message()
             setTitle(title)
-            if let message = message {
+            if let message {
                 setMessage(message)
             }
         }
@@ -250,7 +250,7 @@ import UIKit
             }
 
             safeAreaInsetsObserver = window.observe(\.safeAreaInsets, changeHandler: { [weak self] window, _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 self.center.x = window.frame.midX
                 self.toPresentPosition(.visible(self.presentSide))
             })
@@ -332,7 +332,7 @@ import UIKit
 
         private func toPresentPosition(_ position: PresentPosition) {
             let getPrepareTransform: ((_ side: SPIndicatorPresentSide) -> CGAffineTransform) = { [weak self] side in
-                guard let self = self else { return .identity }
+                guard let self else { return .identity }
                 guard let window = UIApplication.shared.windows.first else { return .identity }
                 switch side {
                 case .top:
@@ -350,7 +350,7 @@ import UIKit
             }
 
             let getVisibleTransform: ((_ side: SPIndicatorPresentSide) -> CGAffineTransform) = { [weak self] side in
-                guard let self = self else { return .identity }
+                guard let self else { return .identity }
                 guard let window = UIApplication.shared.windows.first else { return .identity }
                 switch side {
                 case .top:
@@ -401,7 +401,7 @@ import UIKit
         private var safeAreaInsetsObserver: NSKeyValueObservation?
 
         private var titlesCompactWidth: CGFloat {
-            if let iconView = iconView {
+            if let iconView {
                 let space = iconView.frame.maxY + spaceBetweenTitlesAndImage
                 return frame.width - space * 2
             } else {
@@ -490,7 +490,7 @@ import UIKit
             // Actions
 
             let layoutIcon = { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 guard let iconView = self.iconView else { return }
                 iconView.frame = .init(
                     origin: .init(x: self.layoutMargins.left, y: iconView.frame.origin.y),
@@ -500,7 +500,7 @@ import UIKit
             }
 
             let layoutTitleCenteredCompact = { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 guard let titleLabel = self.titleLabel else { return }
                 titleLabel.textAlignment = .center
                 titleLabel.layoutDynamicHeight(width: self.titlesCompactWidth)
@@ -508,7 +508,7 @@ import UIKit
             }
 
             let layoutTitleCenteredFullWidth = { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 guard let titleLabel = self.titleLabel else { return }
                 titleLabel.textAlignment = .center
                 titleLabel.layoutDynamicHeight(width: self.titlesFullWidth)
@@ -516,7 +516,7 @@ import UIKit
             }
 
             let layoutTitleLeadingFullWidth = { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 guard let titleLabel = self.titleLabel else { return }
                 guard let iconView = self.iconView else { return }
                 let rtl = self.effectiveUserInterfaceLayoutDirection == .rightToLeft
@@ -526,7 +526,7 @@ import UIKit
             }
 
             let layoutSubtitle = { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 guard let titleLabel = self.titleLabel else { return }
                 guard let subtitleLabel = self.subtitleLabel else { return }
                 subtitleLabel.textAlignment = titleLabel.textAlignment
@@ -535,7 +535,7 @@ import UIKit
             }
 
             let layoutTitleSubtitleByVertical = { [weak self] in
-                guard let self = self else { return }
+                guard let self else { return }
                 guard let titleLabel = self.titleLabel else { return }
                 guard let subtitleLabel = self.subtitleLabel else {
                     titleLabel.center.y = self.bounds.midY

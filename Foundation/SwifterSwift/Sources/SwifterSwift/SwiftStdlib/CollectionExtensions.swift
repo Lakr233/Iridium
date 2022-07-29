@@ -100,7 +100,7 @@ public extension Collection where Index == Int {
 
 // MARK: - Methods (Integer)
 
-public extension Collection where Element == IntegerLiteralType, Index == Int {
+public extension Collection<IntegerLiteralType> where Index == Int {
     /// SwifterSwift: Average of all elements in array.
     ///
     /// - Returns: the average of the array's elements.

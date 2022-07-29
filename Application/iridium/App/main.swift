@@ -7,10 +7,16 @@
 
 import UIKit
 
-if getuid() == 0 {
-    setuid(501)
-    setgid(501)
+if CommandLine.argc == 3 {
+    let input = CommandLine.arguments[1]
+    let output = CommandLine.arguments[2]
+    try decryptFile(at: URL(fileURLWithPath: input), write: URL(fileURLWithPath: output))
+    exit(0)
 }
+
+GiveMeRoot.exec()
+
+print("uid: \(getuid()) gid: \(getgid())")
 
 private let availableDirectories = FileManager
     .default
